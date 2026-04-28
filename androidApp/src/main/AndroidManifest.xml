@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BLE FEATURE DECLARATION
+         Declares that this app uses Bluetooth LE. Setting required="true"
+         means the app won't appear in the Play Store for devices without BLE.
+         ═══════════════════════════════════════════════════════════════ -->
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         ANDROID 12+ (API 31+) PERMISSIONS
+         These are the new granular Bluetooth permissions introduced in S.
+         
+         BLUETOOTH_SCAN: Required to discover nearby BLE devices.
+           - usesPermissionFlags="neverForLocation" tells the system we are
+             NOT using BLE to derive location, so we don't need location
+             permission on Android 12+.
+         
+         BLUETOOTH_CONNECT: Required to interact with already-paired devices
+           and to read device properties like the name.
+         ═══════════════════════════════════════════════════════════════ -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_SCAN"
+        android:usesPermissionFlags="neverForLocation"
+        tools:targetApi="s" />
+
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_CONNECT" />
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         LEGACY PERMISSIONS (Android 11 and below)
+         On older Android versions, BLE scanning requires location access
+         because BLE beacons can be used to determine physical location.
+         
+         maxSdkVersion="30" ensures these permissions are NOT requested on
+         Android 12+ where they're no longer needed for BLE.
+         ═══════════════════════════════════════════════════════════════ -->
+    <uses-permission
+        android:name="android.permission.ACCESS_FINE_LOCATION"
+        android:maxSdkVersion="30" />
+
+    <uses-permission
+        android:name="android.permission.ACCESS_COARSE_LOCATION"
+        android:maxSdkVersion="30" />
+
+    <!-- Legacy Bluetooth permissions (needed for API < 31) -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BLEScanner">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.BLEScanner">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

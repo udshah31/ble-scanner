@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- ═══════════════════════════════════════════════════════════
+         BLUETOOTH PRIVACY DESCRIPTIONS
+         Required by Apple for any app that uses CoreBluetooth.
+         These strings are shown to the user in the system permission dialog.
+         ═══════════════════════════════════════════════════════════ -->
+
+    <!-- iOS 13+ Bluetooth usage description (required) -->
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>BLE Scanner needs Bluetooth access to discover and display nearby Bluetooth Low Energy devices.</string>
+
+    <!-- Legacy Bluetooth usage description (iOS 12 and earlier) -->
+    <key>NSBluetoothPeripheralUsageDescription</key>
+    <string>BLE Scanner needs Bluetooth access to discover and display nearby Bluetooth Low Energy devices.</string>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         APP CONFIGURATION
+         ═══════════════════════════════════════════════════════════ -->
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+
+    <key>CFBundleDisplayName</key>
+    <string>BLE Scanner</string>
+
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+
+    <key>CFBundleName</key>
+    <string>$(PRODUCT_NAME)</string>
+
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+
+    <key>CFBundleShortVersionString</key>
+    <string>1.0.0</string>
+
+    <key>CFBundleVersion</key>
+    <string>1</string>
+
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+
+    <key>UIRequiredDeviceCapabilities</key>
+    <array>
+        <string>bluetooth-le</string>
+    </array>
+
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+
+    <key>UILaunchScreen</key>
+    <dict/>
+</dict>
+</plist>
