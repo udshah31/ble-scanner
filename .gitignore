@@ -1,0 +1,145 @@
+# Claude Code
+.claude/
+skills/
+
+# Gradle
+.gradle
+.gradle/
+build/
+build/*
+*.apk
+*.aab
+gradle-app.setting
+!gradle-wrapper.jar
+gradle-wrapper.properties
+
+# Android Studio
+.idea/
+.idea
+*.iml
+*.iws
+*.ipr
+out/
+*.class
+*.jar
+*.war
+*.ear
+local.properties
+gen/
+captures/
+.externalNativeBuild
+.cxx/
+lint-results*.xml
+
+# Android Profiler
+profiler-results
+
+# CMake
+cmake-build-debug/
+cmake-build-release/
+
+# Kotlin
+*.kt.bak
+*.gradle.kts.bak
+
+# iOS
+iosApp/build/
+iosApp/.build/
+*.xcarchive
+*.xcworkspace
+!iosApp/iosApp.xcodeproj/project.pbxproj
+
+DerivedData/
+Build/
+Pods/
+Podfile.lock
+.DS_Store
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+._*
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.classpath
+.project
+.settings/
+.c9/
+*.launch
+.scala_dependencies
+.worksheet
+.metals
+.bloop
+
+# Node (if needed)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python (if needed)
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+venv/
+ENV/
+env/
+
+# Runtime
+*.log
+.env
+.env.local
+.env.*.local
+
+# OS
+Thumbs.db
+
+# Generated files
+generated/
+gen/
+
+# Keystore files
+*.jks
+*.keystore
+
+# Secrets
+secrets.properties
+local.properties
+.gradle/gradle.properties
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Build outputs
+dist/
+build/
+.gradle/
+
+# IntelliJ IDEA
+*.iml
+.idea
+
+# VS Code
+.vscode
+
+# Git
+.git/
+.gitignore
+
+# Package-lock / Lock files (optional - uncomment if needed)
+# package-lock.json
+# yarn.lock
+

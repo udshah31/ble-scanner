@@ -19,8 +19,8 @@ A modern, cross-platform Bluetooth Low Energy (BLE) device scanner built with **
 - ⚡ **Cross-Platform** - Share 100% of business logic between Android & iOS
 - 🔄 **Live Updates** - Real-time device list with animated RSSI changes
 - 🛡️ **Permission Handling** - Proper Android 12+ granular permissions with legacy support
-- 💾 **State Management** - Reactive architecture with Kotlin StateFlow
-- 🎯 **MVVM Architecture** - Clear separation of concerns with ViewModel pattern
+- 💾 **State Management** - Reactive MVI architecture with Kotlin StateFlow
+- 🎯 **MVI Architecture** - Single state, typed actions, Koin dependency injection
 
 ---
 
@@ -47,11 +47,12 @@ BLE Scanner (Root)
 │   ├── androidMain/     (Android-specific implementations)
 │   └── iosMain/         (iOS-specific Kotlin wrappers)
 ├── androidApp/          (Android UI - Jetpack Compose)
+│   ├── di/              (Koin dependency injection)
 │   ├── ui/
-│   │   ├── screen/      (Full screens)
+│   │   ├── screen/      (Root + Screen composables - MVI)
 │   │   ├── components/  (Reusable components)
 │   │   └── theme/       (Material Design 3 theming)
-│   ├── viewmodel/       (MVVM ViewModels)
+│   ├── viewmodel/       (MVI ViewModel, State, Action)
 │   ├── permissions/     (Android permission handling)
 │   └── MainActivity.kt  (Entry point)
 └── iosApp/              (iOS UI - SwiftUI)
@@ -153,11 +154,15 @@ xcodebuild -scheme iosApp \
 └────────────────┬────────────────────────────┘
                  ▼
 ┌─────────────────────────────────────────────┐
-│ BleViewModel.toggleScan()                   │
+│ BleScannerAction.OnToggleScan dispatched    │
 └────────────────┬────────────────────────────┘
                  ▼
 ┌─────────────────────────────────────────────┐
-│ AndroidBleScanner.startScan() / IosBleScanner│
+│ BleViewModel.onAction() → startScan()       │
+└────────────────┬────────────────────────────┘
+                 ▼
+┌─────────────────────────────────────────────┐
+│ AndroidBleScanner / IosBleScanner           │
 └────────────────┬────────────────────────────┘
                  ▼
 ┌─────────────────────────────────────────────┐
@@ -165,11 +170,7 @@ xcodebuild -scheme iosApp \
 └────────────────┬────────────────────────────┘
                  ▼
 ┌─────────────────────────────────────────────┐
-│ Device updates StateFlow<List<BleDevice>>   │
-└────────────────┬────────────────────────────┘
-                 ▼
-┌─────────────────────────────────────────────┐
-│ UI observes flow via collectAsState()       │
+│ BleScannerState updated via StateFlow       │
 └────────────────┬────────────────────────────┘
                  ▼
 ┌─────────────────────────────────────────────┐
@@ -217,8 +218,6 @@ The app displays signal strength using RSSI (Received Signal Strength Indicator)
 
 ## 📖 Documentation
 
-- [**ARCHITECTURE.md**](ARCHITECTURE.md) - Detailed technical architecture
-- [**CONTRIBUTING.md**](CONTRIBUTING.md) - How to contribute
 - [**SETUP_GUIDE.md**](SETUP_GUIDE.md) - Development environment setup
 - [**Screenshots**](screenshots/) - UI screenshots and demos
 
@@ -273,8 +272,6 @@ Required entries:
 ---
 
 ## 🤝 Contributing
-
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)

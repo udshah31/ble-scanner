@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BLE Scanner</string>
+    <string name="cd_scanning">Scanning for BLE devices</string>
+    <string name="cd_bluetooth_idle">Bluetooth idle</string>
 </resources>
